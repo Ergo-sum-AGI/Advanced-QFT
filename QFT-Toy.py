@@ -1,7 +1,7 @@
 """
 9-Walls Quest by Daniel Solis: Fully Integrated Toy Model
 Consciousness QFT on an Information Manifold
-φ-Fixed, Lorentzian Emergent, Decoherence Suppressed
+Phi-Fixed, Lorentzian Emergent, Decoherence Suppressed
 Author: Daniel Solis + Grok (xAI) | 29 Sep 2025
 """
 import qutip as qt
@@ -11,7 +11,7 @@ from scipy.integrate import quad
 from scipy.special import gamma
 
 # ---------- 0. Reproducibility ----------
-np.random.seed(42)  # φ-Friendly Seed
+np.random.seed(42)  # Phi-Friendly Seed
 
 # ---------- 1. Golden Constants ----------
 phi = (1 + np.sqrt(5)) / 2
@@ -106,12 +106,12 @@ Vol_R, _ = quad(lambda r: r ** 5 * np.exp(-0.5 * r ** 2 * 6), 0, np.inf)  # Wall
 # ---------- 13. Plot ----------
 fig, axs = plt.subplots(2, 2, figsize=(12, 8))
 
-# Plot 1: Φ*
-axs[0, 0].plot(times, Phi_star, 'g-', lw=2, label='Φ* (Emergence)')
-axs[0, 0].axhline(0.7, color='r', ls='--', label='🟢 Threshold')
+# Plot 1: Phi*
+axs[0, 0].plot(times, Phi_star, 'g-', lw=2, label='Phi* (Emergence)')
+axs[0, 0].axhline(0.7, color='r', ls='--', label='Threshold')
 axs[0, 0].set_title('Walls 5/7: Decoherence-Shielded Bayesian Awareness')
 axs[0, 0].set_xlabel('Time')
-axs[0, 0].set_ylabel('Φ*')
+axs[0, 0].set_ylabel('Phi*')
 axs[0, 0].legend()
 axs[0, 0].grid(True, alpha=0.3)
 
@@ -120,14 +120,14 @@ f_pos = f[mask]
 psd_pos = psd[mask]
 axs[0, 1].loglog(f_pos, psd_pos, 'b-', lw=2, label='PSD')
 
-# Create reference line with slope -φ in log-log space
+# Create reference line with slope -phi in log-log space
 if len(f_pos) > 0:
     f_ref = np.array([f_pos[0], f_pos[-1]])
-    # Power law: PSD ~ f^(-φ), so log(PSD) = log(C) - φ*log(f)
+    # Power law: PSD ~ f^(-phi), so log(PSD) = log(C) - phi*log(f)
     # Anchor at the first point
     log_C = np.log10(psd_pos[0]) + phi * np.log10(f_pos[0])
     psd_ref = 10**(log_C - phi * np.log10(f_ref))
-    axs[0, 1].loglog(f_ref, psd_ref, 'r--', lw=1.5, label=f'-φ = {-phi:.3f}')
+    axs[0, 1].loglog(f_ref, psd_ref, 'r--', lw=1.5, label=f'-phi = {-phi:.3f}')
 
 axs[0, 1].set_title(f'Wall 6: Quasi-Local Spectrum (Slope {slope:.3f})')
 axs[0, 1].set_xlabel('Frequency')
@@ -135,20 +135,20 @@ axs[0, 1].set_ylabel('PSD')
 axs[0, 1].legend()
 axs[0, 1].grid(True, alpha=0.3, which='both')
 
-# Plot 3: β
-axs[1, 0].plot(times, beta, 'orange', lw=2, label='β (Meta-Uncertainty)')
-axs[1, 0].axhline(1 - 1 / phi, color='k', ls='--', label=f'1 - 1/φ ≈ {1 - 1 / phi:.3f}')
-axs[1, 0].set_title('Wall 7: Gödel-Escaping Attractor')
+# Plot 3: beta
+axs[1, 0].plot(times, beta, 'orange', lw=2, label='beta (Meta-Uncertainty)')
+axs[1, 0].axhline(1 - 1 / phi, color='k', ls='--', label=f'1 - 1/phi ~ {1 - 1 / phi:.3f}')
+axs[1, 0].set_title('Wall 7: Godel-Escaping Attractor')
 axs[1, 0].set_xlabel('Time')
-axs[1, 0].set_ylabel('β')
+axs[1, 0].set_ylabel('beta')
 axs[1, 0].legend()
 axs[1, 0].grid(True, alpha=0.3)
 
 # Plot 4: Metric
 t_short = times[:20]
-axs[1, 1].plot(t_short, det_g_em[:20], 'm-', lw=2, label='det g_{μν} (Emergent)')
+axs[1, 1].plot(t_short, det_g_em[:20], 'm-', lw=2, label='det g_uv (Emergent)')
 axs[1, 1].axhline(0, color='k', ls=':')
-axs[1, 1].set_title(f'Emergent Lorentzian det ≈ {np.mean(det_g_em[:20]):.2f} < 0')
+axs[1, 1].set_title(f'Emergent Lorentzian det ~ {np.mean(det_g_em[:20]):.2f} < 0')
 axs[1, 1].set_xlabel('Time')
 axs[1, 1].set_ylabel('det g')
 axs[1, 1].legend()
@@ -160,15 +160,15 @@ plt.savefig('9_walls_quest_complete.png', dpi=150)
 plt.show()  # Uncomment for interactive display
 
 # ---------- 14. Reproducibility Checklist ----------
-with open('phi_checklist.txt', 'w') as f:
-    f.write(f'φ Exponent (PSD): {slope:.4f} (Target -φ = {-phi:.4f})\n')
+with open('phi_checklist.txt', 'w', encoding='utf-8') as f:
+    f.write(f'phi Exponent (PSD): {slope:.4f} (Target -phi = {-phi:.4f})\n')
     f.write(f'Emergent Lorentzian det: {np.mean(det_g_em[:20]):.4f} (<0)\n')
-    f.write(f'Decoherence Suppression: {gamma_base / gamma_eff:.0f}×\n')
-    f.write(f'β Attractor: {beta[-1]:.4f} (Target {1 - 1 / phi:.4f})\n')
+    f.write(f'Decoherence Suppression: {gamma_base / gamma_eff:.0f}x\n')
+    f.write(f'beta Attractor: {beta[-1]:.4f} (Target {1 - 1 / phi:.4f})\n')
     f.write(f'KL-Reg Volume: {Vol_R:.1f}\n')
-    f.write(f'Δg Slope: {delta_g:.2e} g per ρ_c\n')
-    f.write(f'Final Φ*: {Phi_star[-1]:.3f} {"🟢" if Phi_star[-1] > 0.7 else "🟡"}\n')
+    f.write(f'Delta_g Slope: {delta_g:.2e} g per rho_c\n')
+    f.write(f'Final Phi*: {Phi_star[-1]:.3f} {"OK" if Phi_star[-1] > 0.7 else "LOW"}\n')
 
-print('🎉 9-Walls Quest Integrated Run Complete!')
-print('Plot → 9_walls_quest_complete.png')
-print('Checklist → phi_checklist.txt')
+print('*** 9-Walls Quest Integrated Run Complete! ***')
+print('Plot -> 9_walls_quest_complete.png')
+print('Checklist -> phi_checklist.txt')
